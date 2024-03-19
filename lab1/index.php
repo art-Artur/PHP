@@ -12,5 +12,6 @@
     $name = "Миша";
     echo "<p>Привет, $name!</p>";
     ?>
+    
 </body>
 </html>
