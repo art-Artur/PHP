@@ -14,10 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 function calculateExpression($expression) {
-    // Очищаем ввод от пробелов
     $expression = str_replace(' ', '', $expression);
 
-    // Проверяем наличие недопустимых символов
     if (!preg_match('/^[\d\+\-\*\/\(\)\.]*$/', $expression)) {
         return 'Ошибка';
     }
