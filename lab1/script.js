@@ -7,7 +7,7 @@ function clearDisplay() {
 }
 
 function calculate() {
-    var expression = document.getElementById('display').value;
+    const expression = document.getElementById('display').value;
     fetch('backend.php', {
         method: 'POST',
         body: JSON.stringify({ expression: expression }),

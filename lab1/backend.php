@@ -20,9 +20,6 @@ function calculateExpression($expression) {
         return 'Ошибка';
     }
 
-    $expression = str_replace('cot', '1/tan', $expression);
-    $expression = str_replace('pi', pi(), $expression);
-
     $result = eval('return ' . $expression . ';');
 
     return $result;
