@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <%- include('./navbar') %>
+    <div class="container">
+      <h1 class="main-text"><%= article.title %></h1>
+      <p class="article"><%= article.text %></p>
+      <p>
+        Автор:
+        <a href="/authors/<%= article.Author.id %>"
+          ><%= article.Author.name %></a
+        >
+      </p>
+      <form
+        id="delete-article-form"
+        action="/articles/delete/<%= article.id %>"
+        method="POST"
+      >
+        <button class="btn btn-danger" type="submit">Удалить статью</button>
+      </form>
+
+      <a href="/articles/<%=article.id%>/edit" class="btn btn-danger">Редактировать статью</a>
+
+      <h3>Комментарии</h3>
+      <% article.Comments.forEach(comment => { %>
+      <div>
+        <p><strong><%= comment.author %>:</strong> <%= comment.text %></p>
+      </div>
+      <% }) %>
+
+      <h3 class="comments">Добавить комментарий</h3>
+      <form action="/articles/<%= article.id %>/comments" method="POST">
+        <label for="author">Имя:</label>
+        <input type="text" id="author" name="author" required /><br />
+        <label for="text">Текст</label>
+        <textarea id="text" name="text" required></textarea><br />
+        <button class="btn btn-primary add-btn" type="submit">Добавить</button>
+      </form>
+      <a href="/articles">Вернуться к статьям</a>
+    </div>
+  </body>
+</html>
